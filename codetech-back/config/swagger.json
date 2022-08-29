@@ -1,0 +1,161 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Producs API",
+        "description": "Producs API",
+        "termsOfServices": "http://localhost:2162/",
+        "version": "1.0.0"
+    },
+    "serves": [
+        {
+            "url": "http://localhost:2162/",
+            "description": "API local"
+        },
+        {
+            "url": "http://www.codetech.com.br/",
+            "description": "API de produção"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Pegar todos os produtos",
+                "description": "Pegar todos os produtos",
+                "responses": {
+                    "200": {
+                        "description": "Status OK",
+                        "content": {
+                            "aplication/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/emphasis": {
+            "get": {
+                "summary": "Pegar todos os produtos da shelf emphasis",
+                "description": "Pegar todos os produtos da shelf emphasis",
+                "responses": {
+                    "200": {
+                        "description": "Status OK",
+                        "content": {
+                            "aplication/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/similars": {
+            "get": {
+                "summary": "Pegar todos os produtos da shelf similars",
+                "description": "Pegar todos os produtos da shelf similars",
+                "responses": {
+                    "200": {
+                        "description": "Status OK",
+                        "content": {
+                            "aplication/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/news": {
+            "get": {
+                "summary": "Pegar todos os produtos da shelf news",
+                "description": "Pegar todos os produtos da shelf news",
+                "responses": {
+                    "200": {
+                        "description": "Status OK",
+                        "content": {
+                            "aplication/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": {
+                    "query": "listId",
+                    "description": "Colocar uma query com o nome listId, e separar os ids por ;",
+                    "required": true
+                }
+            }
+        },
+        "/getByListId": {
+            "get": {
+                "summary": "Pegar todos os produtos de uma lista de IDs",
+                "description": "Pegar todos os produtos de uma lista de IDs",
+                "responses": {
+                    "200": {
+                        "description": "Status OK",
+                        "content": {
+                            "aplication/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Product": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "rating": {
+                        "type": "number"
+                    },
+                    "oldPrice": {
+                        "type": "number"
+                    },
+                    "price": {
+                        "type": "number"
+                    },
+                    "image": {
+                        "type": "string"
+                    },
+                    "container": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
