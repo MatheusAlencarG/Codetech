@@ -1,12 +1,87 @@
-import React from "react";
+import React, { useEffect, useState, useMemo } from "react";
+import AliceCarousel from 'react-alice-carousel';
 
-import './ShelfEmphasis.css';
+import api from '../../../services/api';
+import Shelf from '../../../Components/Shelf/Shelf';
+
+import { Container } from './styles';
+import 'react-alice-carousel/lib/alice-carousel.css';
+
+type EmphasisProducts = {
+    id: number;
+    name: string;
+    rating: number;
+    oldPrice: number;
+    price: number;
+    image: string;
+    container: string;
+};
 
 function ShelfEmphasis() {
+    const [ emphasisProducts, setEmphasisProducts ] = useState<EmphasisProducts[]>([]);
+    const isMobile = useMemo(() => {return window.screen.width <= 765}, []);
+
+    const teste = require('../../../Assets/laptop-image-one.png');
+    const teste2 = require('../../../Assets/laptop-image-two.png');
+    const teste3 = require('../../../Assets/laptop-image-news.png');
+    console.log('teste', teste, teste2, teste3);
+
+    const responsive = {
+        0: { items: 2 },
+        1024: { items: 3 },
+        1200: { items: 4 },
+    };
+    
+
+    useEffect(() => {
+        api.get("/emphasis")
+        .then(response => {
+            if (response.status === 200) {
+                setEmphasisProducts(response.data);
+            }
+        })
+        .catch(err => {
+            console.error(err);
+        })
+    }, []);
+
+    function shelfItems() {
+        const shelfItems:any[] = []
+
+        emphasisProducts.map((product: EmphasisProducts) => {
+            shelfItems.push(
+                <Shelf 
+                    key={product.id}
+                    id={product.id}
+                    name={product.name}
+                    rating={product.rating}
+                    oldPrice={product.oldPrice}
+                    price={product.price}
+                    image={product.image}
+                    marginHorizontal={isMobile ? 5 : 25}
+                />
+
+            )
+        })
+
+        return shelfItems;
+    }
+
     return(
-        <>
-            <p>I am ShelfEmphasis</p>
-        </>
+        <section>
+            <Container>
+                <h2>PRODUTO EM DESTAQUE</h2>
+                <AliceCarousel
+                    mouseTracking
+                    items={shelfItems()}
+                    controlsStrategy="alternate"
+                    responsive={responsive}
+                    disableDotsControls
+                    disableButtonsControls
+                />
+            </Container>
+
+        </section>
     );
 }
 

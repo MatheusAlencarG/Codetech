@@ -1,3 +1,20 @@
+:root {
+  --ligth-black: #1E1E1E;
+  --black: #151513;
+  --dark-black: #000000;
+  --ligth-purple: #C706FF;
+  --purple: #AE16D7;
+  --dark-purple: #280034;
+  --dark-purple-plus: #200528;
+  --button-gradient-background: linear-gradient(135deg, #3D033B 0%, #A30E93 100%);
+  --white: #FFFFFF;
+  --gray: #EFF4F5;
+  --dark-gray: #282826;
+  --darkgray: #282826;
+  --black-gray: #151513;
+  --blue: #754DFD;
+}
+
 @import url('https://rsms.me/inter/inter.css');
 
 body {
@@ -7,4 +24,30 @@ body {
 
 @supports (font-variation-settings: normal) {
   body { font-family: 'Inter var', sans-serif; }
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.alice-carousel__wrapper {
+  padding: 20px 0;
+}
+
+.open {
+  height: auto !important;
+}
+
+.cartOpen {
+  right: 0 !important;
+}
+
+.menuOpen {
+  bottom: 0 !important;
 }

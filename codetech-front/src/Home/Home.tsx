@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Header from '../Header/Header';
 import PrincipalBanner from './Sections/PrincipalBanner/PrincipalBanner';
 import Categories from './Sections/Categories/Categories';
@@ -8,18 +8,20 @@ import News from './Sections/News/News';
 import ShelfSimilar from './Sections/ShelfSimilar/ShelfSimilar';
 import Footer from '../Footer/Footer';
 
-import './Home.css';
+import {  } from './styles.js';
 
 function Home() {
+    const isMobile = useMemo(() => {return window.screen.width <= 765}, []);
+
     return(
         <>
             <Header />
             <PrincipalBanner />
             <Categories />
             <ShelfEmphasis />
-            <TipBar />
+            {!isMobile && <TipBar />}
             <News />
-            <ShelfSimilar />
+            {!isMobile && <ShelfSimilar />}
             <Footer />
         </>
     );
