@@ -3,15 +3,6 @@ const routes = express.Router();
 const swaggerUI = require('swagger-ui-express');
 const swaggerDocs = require('./swagger.json');
 
-// {
-//     id: 1,
-//     name: 'Notebook VAIO® FE15 Intel® Core™ i7 Windows 11 Home 8GB 512GB SSD Full HD - Prata',
-//     rating: 4.6,
-//     oldPrice: 600.00,
-//     price: 500.00,
-//     image: '/static/media/laptop-image-one.f580d5f3d384ca253beb.png',
-//     container: 'ShelfEmphasis' ou 'ShelfSimilar' ou 'News' ou 'FirstNews'
-// }
 let db = [
     {
         id: 1,

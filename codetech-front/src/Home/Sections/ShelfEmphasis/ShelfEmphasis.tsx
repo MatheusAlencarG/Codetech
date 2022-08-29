@@ -21,11 +21,6 @@ function ShelfEmphasis() {
     const [ emphasisProducts, setEmphasisProducts ] = useState<EmphasisProducts[]>([]);
     const isMobile = useMemo(() => {return window.screen.width <= 765}, []);
 
-    const teste = require('../../../Assets/laptop-image-one.png');
-    const teste2 = require('../../../Assets/laptop-image-two.png');
-    const teste3 = require('../../../Assets/laptop-image-news.png');
-    console.log('teste', teste, teste2, teste3);
-
     const responsive = {
         0: { items: 2 },
         1024: { items: 3 },
